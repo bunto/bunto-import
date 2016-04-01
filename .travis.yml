@@ -14,7 +14,6 @@ env:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   matrix:
     - BUNTO_VERSION=1.0
-    - BUNTO_VERSION=1.5
 cache: bundler
 sudo: false
 before_script:
