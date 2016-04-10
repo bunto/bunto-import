@@ -1,6 +1,7 @@
 # bunto-import
 
 [![Build Status](https://travis-ci.org/bunto/bunto-import.svg?branch=master)](https://travis-ci.org/bunto/bunto-import)
+[![Security](https://hakiri.io/github/bunto/bunto-import/master.svg)](https://hakiri.io/github/bunto/bunto-import/master)
 
 The new __Bunto__ command for importing from various blogs to Bunto format.
 
