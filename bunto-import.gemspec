@@ -29,7 +29,8 @@ Gem::Specification.new do |s|
   # runtime dependencies
   s.add_runtime_dependency('bunto', "~> 1.0")
   s.add_runtime_dependency('fastercsv')
-  s.add_runtime_dependency('nokogiri')
+  ## Fix Hakiri warnings (https://hakiri.io/github/bunto/bunto-import/master/25af7a986e4725bd0e98e1b88a6ad7888f1feda2/warnings)
+  s.add_runtime_dependency('nokogiri', ">= 1.6.7.2")
 
   # development dependencies
   s.add_development_dependency('rake', "~> 10.1.0")
