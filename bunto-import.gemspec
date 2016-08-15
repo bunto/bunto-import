@@ -27,10 +27,9 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = %w[README.markdown LICENSE]
 
   # runtime dependencies
-  s.add_runtime_dependency('bunto', "~> 1.0")
+  s.add_runtime_dependency('bunto', ENV['BUNTO_VERSION'] ? "~> #{ENV['BUNTO_VERSION']}" : '>= 1.4')
   s.add_runtime_dependency('fastercsv')
-  ## Fix Hakiri warnings (https://hakiri.io/github/bunto/bunto-import/master/25af7a986e4725bd0e98e1b88a6ad7888f1feda2/warnings)
-  s.add_runtime_dependency('nokogiri', ">= 1.6.7.2")
+  s.add_runtime_dependency('nokogiri')
 
   # development dependencies
   s.add_development_dependency('rake', "~> 10.1.0")
@@ -43,6 +42,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('rr', "~> 1.0")
   s.add_development_dependency('simplecov', "~> 0.7")
   s.add_development_dependency('simplecov-gem-adapter', "~> 1.0.1")
+  s.add_development_dependency('rubocop')
 
   # migrator dependencies:
   s.add_development_dependency('sequel', "~> 3.42")
@@ -54,6 +54,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('behance', "~> 0.3")
   s.add_development_dependency('unidecode')
   s.add_development_dependency('open_uri_redirections')
+  s.add_development_dependency('reverse_markdown')
 
   # site dependencies:
   s.add_development_dependency('launchy', '~> 2.4')

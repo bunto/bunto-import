@@ -1,14 +1,19 @@
 # Travis CI
 language: ruby
 rvm:
-  - 2.2
-  - 2.1
-  - 2.0
+  - 2.3.1
+  - 2.3.0
+  - 2.2.5
+matrix:
+  include:
+    - # Ruby 2.3.0
+      rvm: 2.3.0
+      env: BUNTO_VERSION=3.2.1
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   matrix:
-    - BUNTO_VERSION=1.0
+    - BUNTO_VERSION=3.0.0
 cache: bundler
 sudo: false
 before_script:

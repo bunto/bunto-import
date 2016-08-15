@@ -41,8 +41,8 @@ module BuntoImport
           feed_url = url + "?num=#{per_page}&start=#{current_page * per_page}"
           puts "Fetching #{feed_url}"
           feed = open(feed_url)
-          json = feed.readlines.join("\n")[21...-2]  # Strip Tumblr's JSONP chars.
-          blog = JSON.parse(json)
+          contents = feed.readlines.join("\n")
+          blog = extract_json(contents)
           puts "Page: #{current_page + 1} - Posts: #{blog["posts"].size}"
           batch = blog["posts"].map { |post| post_to_hash(post, format) }
 
@@ -64,6 +64,13 @@ module BuntoImport
       end
 
       private
+
+      def self.extract_json(contents)
+        beginning = contents.index("{")
+        ending = contents.rindex("}")+1
+        json = contents[beginning...ending]  # Strip Tumblr's JSONP chars.
+        blog = JSON.parse(json)
+      end
 
       # Writes a post out to disk
       def self.write_post(post, use_markdown, add_highlights)
@@ -132,12 +139,12 @@ module BuntoImport
             post["conversation"].each do |line|
               content << "<dt>#{line['label']}</dt><dd>#{line['phrase']}</dd>"
             end
-            content << "</section></dialog>"
+            content << "</dialog></section>"
           when "video"
             title = post["video-title"]
             content = post["video-player"]
             unless post["video-caption"].nil?
-              unless content.nil?
+              if content
                 content << "<br/>" + post["video-caption"]
               else
                 content = post["video-caption"]
@@ -206,9 +213,13 @@ module BuntoImport
         urls = Hash[posts.map { |post|
           # Create an initial empty file for the post so that
           # we can instantiate a post object.
-          File.open("_posts/tumblr/#{post[:name]}", "w")
           tumblr_url = URI.parse(URI.encode(post[:slug])).path
-          bunto_url = Bunto::Post.new(site, Dir.pwd, "", "tumblr/" + post[:name]).url
+          bunto_url = if Bunto.const_defined? :Post
+                         File.open("_posts/tumblr/#{post[:name]}", "w") { |f| f.puts }
+                         Bunto::Post.new(site, Dir.pwd, "", "tumblr/" + post[:name]).url
+                       else
+                         Bunto::Document.new(File.expand_path("tumblr/#{post[:name]}"), site: site, collection: site.posts).url
+                       end
           redirect_dir = tumblr_url.sub(/\//, "") + "/"
           FileUtils.mkdir_p redirect_dir
           File.open(redirect_dir + "index.html", "w") do |f|

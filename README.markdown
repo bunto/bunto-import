@@ -29,5 +29,5 @@ irb> BuntoImport::Importers.const_get(importer_class).run(options_hash)
 
 ## Documentation
 
-bunto-import has its own documentation site, found at https://bunto.github.io/.
-Dedicated [documentation for each migrator](https://bunto.github.io/import/docs/home/) is available there.
+bunto-import has its own documentation site, found at https://bunto-import.tk/.
+Dedicated [documentation for each migrator](https://bunto-import.tk/docs/home/) is available there.

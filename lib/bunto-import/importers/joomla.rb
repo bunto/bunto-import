@@ -22,8 +22,10 @@ module BuntoImport
         BuntoImport.require_with_fallback(%w[
           rubygems
           sequel
+          mysql2
           fileutils
           safe_yaml
+          mysql
         ])
       end
 
@@ -35,7 +37,7 @@ module BuntoImport
         section = options.fetch('section', '1')
         table_prefix = options.fetch('prefix', "jos_")
 
-        db = Sequel.mysql(dbname, :user => user, :password => pass, :host => host, :encoding => 'utf8')
+        db = Sequel.mysql2(dbname, :user => user, :password => pass, :host => host, :encoding => 'utf8')
 
         FileUtils.mkdir_p("_posts")
 
