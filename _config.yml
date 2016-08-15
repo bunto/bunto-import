@@ -1,10 +1,10 @@
 title: "bunto-import • Import your old &amp; busted site to Bunto"
-highlighter: pygments
+highlighter: rouge
 relative_permalinks: false
 permalink: /news/:year/:month/:day/:title/
 excerpt_separator: ""
 repository: https://github.com/bunto/bunto-import
-latest_release: 1.0.0
+latest_release: 3.0.0
 
 collections:
   docs:
