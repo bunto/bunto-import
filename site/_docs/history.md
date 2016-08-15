@@ -5,7 +5,7 @@ permalink: "/docs/history/"
 prev_section: contributing
 ---
 
-## 2.0.0 / 2016-08-15
+## 3.0.0 / 2016-08-15
 ### Development
 - Updates
 
