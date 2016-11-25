@@ -1,5 +1,6 @@
 title: "bunto-import • Import your old &amp; busted site to Bunto"
 url: https://bunto-import.tk
+google_analytics_id: UA-88019666-2
 highlighter: rouge
 relative_permalinks: false
 permalink: /news/:year/:month/:day/:title/
