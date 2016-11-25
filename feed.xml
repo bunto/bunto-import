@@ -14,7 +14,7 @@ permalink: /feed.xml
   >
 <channel>
     <title xml:lang="en">{{ site.title }}</title>
-    <atom:link type="application/atom+xml" href="http://import.buntorb.com/feed.xml" rel="self"/>
+    <atom:link type="application/atom+xml" href="https://bunto-import.tk/feed.xml" rel="self"/>
     <link>https://bunto-import.tk</link>
     <pubDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
     <lastBuildDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %z" }}</lastBuildDate>

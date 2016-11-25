@@ -1,4 +1,5 @@
 title: "bunto-import • Import your old &amp; busted site to Bunto"
+url: https://bunto-import.tk
 highlighter: rouge
 relative_permalinks: false
 permalink: /news/:year/:month/:day/:title/
