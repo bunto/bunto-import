@@ -2,3 +2,5 @@ _site/
 *.swp
 pkg/
 test/
+.bunto-metadata
+.sass-cache/
